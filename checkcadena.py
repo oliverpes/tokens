@@ -1,14 +1,16 @@
 def contienetoken(cadena, tokens):
-    palabras_reservadas = [token for token in tokens if token in cadena ]#obtenemos los tokens que estan dentro de la cadena
-    return palabras_reservadas#devuelve los tokens dentro de la cadena
+    palabras_reservadas = [token for token in tokens if token in cadena]  # Filtra los tokens presentes en la cadena
+    return palabras_reservadas  # Devuelve los tokens encontrados
 
-tokens_predefinidos  = ["clase", "alumnos"] #definiomos los okens reservados
+# 📌 Se pide al usuario que ingrese los tokens separados por comas
+tokens_usuario = input("Ingrese los tokens separados por comas: ")
+tokens_predefinidos = [token.strip() for token in tokens_usuario.split(",")]  # Elimina espacios extra
 
-cadena_entrada = input("ingrese un texto: ")#se ingresa la cadena de texto por el usuario
+cadena_entrada = input("Ingrese un texto: ")  # Se ingresa la cadena de texto por el usuario
 
-tokens_encontrados = contienetoken(cadena_entrada,tokens_predefinidos)#se ingresa la cadena a la funcion y los tokens predefinidos 
+tokens_encontrados = contienetoken(cadena_entrada, tokens_predefinidos)  # Se busca en la cadena
 
-if tokens_predefinidos:#se validan los tokens dentro de la cadena de texto
-    print("se encontraron los siguientes tokens:", tokens_encontrados)#se muestran los tokens en la cadena
-else:#se valida el caso contrario
-    print("no se encontraron tokens en la cadena")#se confirma si no se encontraron tokens definidos en la cadena
+if tokens_encontrados:  # Se valida si hay tokens encontrados
+    print("Se encontraron los siguientes tokens:", tokens_encontrados)  # Se muestran los tokens en la cadena
+else:  
+    print("No se encontraron tokens en la cadena.")  # Se confirma si no se encontraron tokens
